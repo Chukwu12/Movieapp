@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/bb1892d46f.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Register Form</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">MoviesInfo</a>
+          <a class="navbar-brand" href="registration.html">Registration</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="form-box">
+        <div class="button-box">
+          <div id="btn"></div>
+          <button type="button" class="toggle-btn" onclick="login()">
+            Log In
+          </button>
+          <button type="button" class="toggle-btn" onclick="register()">
+            Register
+          </button>
+        </div>
+        <div class="social-icons">
+          <i class="fab fa-google"></i>
+          <i class="fab fa-facebook fa-2x"></i>
+          <i class="fab fa-twitter fa-2x"></i>
+        </div>
+        <form id="login" class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            placeholder="User Name"
+            required
+          />
+          <span><i class="fa fa-eye" onclick="show()"> </i></span>
+          <input
+            id="pswrd"
+            type="password"
+            class="input-field"
+            placeholder=" Password"
+            required
+          />
+
+          <input type="checkbox" class="check-box" /><span1
+            >Remember Password</span1
+          >
+          <button type="submit" class="sumbit-btn">Login</button>
+        </form>
+
+        <form id="register" class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            placeholder="User Name"
+            required
+          />
+          <input
+            type="email"
+            class="input-field"
+            placeholder="Email "
+            required
+          />
+
+          <input
+            id="pswrd"
+            type="password"
+            class="input-field"
+            placeholder="Enter Password"
+            required
+          />
+
+          <input type="checkbox" class="check-box" /><span1
+            >I agree to terms and conditions</span1
+          >
+          <button type="submit" class="sumbit-btn">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      var x = document.getElementById("login");
+      var y = document.getElementById("register");
+      var z = document.getElementById("btn");
+
+      function register() {
+        x.style.left = "-400px";
+        y.style.left = "50px";
+        z.style.left = "110px";
+      }
+
+      function login() {
+        x.style.left = "50px";
+        y.style.left = "450px";
+        z.style.left = "0px";
+      }
+
+      var state = false;
+      function toggle() {
+        if (state) {
+          document.getElementById("password").setAttribute("type", "password");
+          document.getElementById("eye").style.color = "#7a797e";
+          state = false;
+        } else {
+          document.getElementById("password").setAttribute("type", "text");
+          state = true;
+        }
+      }
+
+      function show() {
+        var pswrd = document.getElementById("pswrd");
+        var icon = document.querySelector(".fas");
+        if (pswrd.type === "password") {
+          pswrd.type = "text";
+          icon.style.color = "#7f2092";
+        } else {
+          pswrd.type = "password";
+          icon.style.color = "#7f2092";
+        }
+      }
+    </script>
+  </body>
+</html>
