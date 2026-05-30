@@ -6,38 +6,66 @@
     <title>MoviesInfo</title>
     <link
       rel="stylesheet"
-      href="file:///Users/okeyegeruoh/Downloads/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+      crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=6" />
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">MoviesInfo</a>
+    <header class="app-header">
+      <a class="brand" href="index.html" aria-label="MoviesInfo home">
+        <span class="brand-mark">M</span>
+        <span class="brand-copy">
+          <strong>MoviesInfo</strong>
+          <small>Find, save, and revisit great films</small>
+        </span>
+      </a>
 
-          <a class="navbar-brand" href="registration.html">Registration</a>
-        </div>
+      <nav class="header-links" aria-label="Primary">
+        <a class="is-active" href="index.html">Browse</a>
+        <a href="registration.html">Account</a>
+      </nav>
+
+      <div class="app-header__bottom">
+        <p>Search the catalog, open a movie, and get details without visual clutter.</p>
       </div>
-    </nav>
+    </header>
 
-    <div class="container">
-      <div class="jumbotron">
-        <h3 class="text-center">Search For any Movies</h3>
-        <form id="searchForm">
+    <main class="page-shell">
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Cinema search</p>
+          <h1>Find films with a cleaner, faster interface.</h1>
+          <p>
+            Search the TMDB catalog, compare results at a glance, and jump into
+            details without the clutter.
+          </p>
+        </div>
+
+        <form id="searchForm" class="search-bar" autocomplete="off">
+          <label class="sr-only" for="searchText">Search movies</label>
           <input
             type="text"
-            class="form-control"
+            class="search-input"
             id="searchText"
-            placeholder="Search Movies..."
+            placeholder="Search movies, actors, or franchises"
           />
+          <button class="search-button" type="submit">Search</button>
         </form>
-      </div>
-    </div>
+      </section>
 
-    <div class="container">
-      <div id="movies" class="row"></div>
-    </div>
+      <section class="results-section" aria-live="polite">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Results</p>
+            <h2>Featured matches</h2>
+          </div>
+          <p id="resultsMeta" class="results-meta">Type a title to begin.</p>
+        </div>
+
+        <div id="movies" class="movie-grid"></div>
+      </section>
+    </main>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"

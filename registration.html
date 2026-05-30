@@ -3,136 +3,258 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/bb1892d46f.js"
-      crossorigin="anonymous"
-    ></script>
     <title>Register Form</title>
-    <link rel="stylesheet" href="css/style.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="css/style.css?v=6" />
   </head>
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">MoviesInfo</a>
-          <a class="navbar-brand" href="registration.html">Registration</a>
-        </div>
-      </div>
-    </nav>
+  <body class="auth-page">
+    <header class="app-header">
+      <a class="brand" href="index.html" aria-label="MoviesInfo home">
+        <span class="brand-mark">M</span>
+        <span class="brand-copy">
+          <strong>MoviesInfo</strong>
+          <small>Personalize your watchlist</small>
+        </span>
+      </a>
 
-    <div class="hero">
-      <div class="form-box">
-        <div class="button-box">
-          <div id="btn"></div>
-          <button type="button" class="toggle-btn" onclick="login()">
+      <nav class="header-links" aria-label="Primary">
+        <a href="index.html">Browse</a>
+        <a class="is-active" href="registration.html">Account</a>
+      </nav>
+
+      <div class="app-header__bottom">
+        <p>One place to sign in, register, and manage your movie profile.</p>
+      </div>
+    </header>
+
+    <main class="page-shell auth-shell">
+      <section class="auth-intro">
+        <p class="eyebrow">Account access</p>
+        <h1>One clean place for login, registration, and profile access.</h1>
+        <p>
+          Keep your movie activity organized with a polished account experience
+          that matches the rest of the app.
+        </p>
+
+        <div class="auth-features">
+          <article class="auth-feature">
+            <h2>Fast sign in</h2>
+            <p>Jump back into your profile without digging through cluttered forms.</p>
+          </article>
+          <article class="auth-feature">
+            <h2>Personalized tracking</h2>
+            <p>Save favorites, manage preferences, and keep your watch history ready.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="auth-card" aria-labelledby="authTitle">
+        <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+          <button type="button" class="auth-tab is-active" data-auth-target="loginPanel" aria-selected="true">
             Log In
           </button>
-          <button type="button" class="toggle-btn" onclick="register()">
+          <button type="button" class="auth-tab" data-auth-target="registerPanel" aria-selected="false">
             Register
           </button>
         </div>
-        <div class="social-icons">
-          <i class="fab fa-google"></i>
-          <i class="fab fa-facebook fa-2x"></i>
-          <i class="fab fa-twitter fa-2x"></i>
+
+        <div class="auth-panel is-active" id="loginPanel" role="tabpanel" aria-labelledby="authTitle">
+          <p class="auth-panel__eyebrow">Welcome back</p>
+          <h2 id="authTitle">Log in to continue</h2>
+          <p class="auth-status" id="loginStatus" aria-live="polite"></p>
+
+          <form class="auth-form" id="loginForm">
+            <label class="auth-field">
+              <span>User name</span>
+              <input type="text" name="loginUsername" placeholder="Enter your username" required />
+            </label>
+
+            <label class="auth-field auth-field--password">
+              <span>Password</span>
+              <input id="loginPassword" type="password" name="loginPassword" placeholder="Enter your password" required />
+              <button class="auth-eye" type="button" data-toggle-password="loginPassword" aria-label="Show password">
+                Show
+              </button>
+            </label>
+
+            <div class="auth-row">
+              <label class="auth-check">
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="auth-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit">Login</button>
+          </form>
         </div>
-        <form id="login" class="input-group">
-          <input
-            type="text"
-            class="input-field"
-            placeholder="User Name"
-            required
-          />
-          <span><i class="fa fa-eye" onclick="show()"> </i></span>
-          <input
-            id="pswrd"
-            type="password"
-            class="input-field"
-            placeholder=" Password"
-            required
-          />
 
-          <input type="checkbox" class="check-box" /><span1
-            >Remember Password</span1
-          >
-          <button type="submit" class="sumbit-btn">Login</button>
-        </form>
+        <div class="auth-panel" id="registerPanel" role="tabpanel" aria-labelledby="authTitle" hidden>
+          <p class="auth-panel__eyebrow">Create account</p>
+          <h2>Register your profile</h2>
+          <p class="auth-status" id="registerStatus" aria-live="polite"></p>
 
-        <form id="register" class="input-group">
-          <input
-            type="text"
-            class="input-field"
-            placeholder="User Name"
-            required
-          />
-          <input
-            type="email"
-            class="input-field"
-            placeholder="Email "
-            required
-          />
+          <form class="auth-form" id="registerForm">
+            <label class="auth-field">
+              <span>User name</span>
+              <input type="text" name="registerUsername" placeholder="Choose a username" required />
+            </label>
 
-          <input
-            id="pswrd"
-            type="password"
-            class="input-field"
-            placeholder="Enter Password"
-            required
-          />
+            <label class="auth-field">
+              <span>Email</span>
+              <input type="email" name="registerEmail" placeholder="you@example.com" required />
+            </label>
 
-          <input type="checkbox" class="check-box" /><span1
-            >I agree to terms and conditions</span1
-          >
-          <button type="submit" class="sumbit-btn">Register</button>
-        </form>
-      </div>
-    </div>
+            <label class="auth-field auth-field--password">
+              <span>Password</span>
+              <input id="registerPassword" type="password" name="registerPassword" placeholder="Create a password" required />
+              <button class="auth-eye" type="button" data-toggle-password="registerPassword" aria-label="Show password">
+                Show
+              </button>
+            </label>
+
+            <label class="auth-check auth-check--stacked">
+              <input type="checkbox" required />
+              <span>I agree to the terms and conditions</span>
+            </label>
+
+            <button type="submit" class="auth-submit">Register</button>
+          </form>
+        </div>
+      </section>
+    </main>
 
     <script>
-      var x = document.getElementById("login");
-      var y = document.getElementById("register");
-      var z = document.getElementById("btn");
+      const API_BASE = window.location.origin && window.location.origin !== "null"
+        ? window.location.origin
+        : "http://localhost:3000";
+      const tabs = document.querySelectorAll(".auth-tab");
+      const panels = document.querySelectorAll(".auth-panel");
+      const loginForm = document.getElementById("loginForm");
+      const registerForm = document.getElementById("registerForm");
+      const loginStatus = document.getElementById("loginStatus");
+      const registerStatus = document.getElementById("registerStatus");
 
-      function register() {
-        x.style.left = "-400px";
-        y.style.left = "50px";
-        z.style.left = "110px";
+      function activatePanel(targetId) {
+        tabs.forEach((tab) => {
+          const isActive = tab.dataset.authTarget === targetId;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", String(isActive));
+        });
+
+        panels.forEach((panel) => {
+          const isActive = panel.id === targetId;
+          panel.classList.toggle("is-active", isActive);
+          panel.hidden = !isActive;
+        });
       }
 
-      function login() {
-        x.style.left = "50px";
-        y.style.left = "450px";
-        z.style.left = "0px";
+      function setStatus(node, message, variant) {
+        if (!node) return;
+        node.textContent = message;
+        node.dataset.variant = variant || "";
       }
 
-      var state = false;
-      function toggle() {
-        if (state) {
-          document.getElementById("password").setAttribute("type", "password");
-          document.getElementById("eye").style.color = "#7a797e";
-          state = false;
-        } else {
-          document.getElementById("password").setAttribute("type", "text");
-          state = true;
+      async function fetchJson(url, options = {}) {
+        const response = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+            ...(options.headers || {}),
+          },
+          ...options,
+        });
+
+        const contentType = response.headers.get("content-type") || "";
+        const payload = contentType.includes("application/json")
+          ? await response.json()
+          : await response.text();
+
+        if (!response.ok) {
+          const errorMessage =
+            typeof payload === "string"
+              ? payload
+              : payload?.error || payload?.message || "Request failed.";
+          throw new Error(errorMessage);
         }
+
+        return payload;
       }
 
-      function show() {
-        var pswrd = document.getElementById("pswrd");
-        var icon = document.querySelector(".fas");
-        if (pswrd.type === "password") {
-          pswrd.type = "text";
-          icon.style.color = "#7f2092";
-        } else {
-          pswrd.type = "password";
-          icon.style.color = "#7f2092";
-        }
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activatePanel(tab.dataset.authTarget));
+      });
+
+      if (loginForm) {
+        loginForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(loginForm);
+          const username = String(formData.get("loginUsername") || "").trim();
+          const password = String(formData.get("loginPassword") || "").trim();
+
+          if (!username || !password) {
+            setStatus(loginStatus, "Enter both a username and password.", "error");
+            return;
+          }
+
+          try {
+            const user = await fetchJson(`${API_BASE}/users/${encodeURIComponent(username)}`);
+
+            if (!user || user.Username !== username) {
+              throw new Error("User not found.");
+            }
+
+            sessionStorage.setItem("movieappUser", username);
+            setStatus(loginStatus, "Login ready. Open your profile from the account page.", "success");
+          } catch (error) {
+            setStatus(loginStatus, error.message || "Unable to log in right now.", "error");
+          }
+        });
       }
+
+      if (registerForm) {
+        registerForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(registerForm);
+          const username = String(formData.get("registerUsername") || "").trim();
+          const email = String(formData.get("registerEmail") || "").trim();
+          const password = String(formData.get("registerPassword") || "").trim();
+
+          if (!username || !email || !password) {
+            setStatus(registerStatus, "Fill out every field to create your account.", "error");
+            return;
+          }
+
+          try {
+            await fetchJson(`${API_BASE}/users`, {
+              method: "POST",
+              body: JSON.stringify({
+                Username: username,
+                Password: password,
+                Email: email,
+              }),
+            });
+
+            registerForm.reset();
+            setStatus(registerStatus, "Account created successfully. You can log in now.", "success");
+            activatePanel("loginPanel");
+          } catch (error) {
+            setStatus(registerStatus, error.message || "Registration failed.", "error");
+          }
+        });
+      }
+
+      document.querySelectorAll("[data-toggle-password]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const field = document.getElementById(button.dataset.togglePassword);
+          if (!field) return;
+
+          const isPassword = field.type === "password";
+          field.type = isPassword ? "text" : "password";
+          button.textContent = isPassword ? "Hide" : "Show";
+          button.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
+        });
+      });
     </script>
   </body>
 </html>
